@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "IkNK9yH4rxFdmykVGCZXP0fdrnZ86V+/gB4Vd1m3uOhuLgHzxfoM0MeJWy5ZU8oZkG3Cy2WlNRR76xzDjON8fA==",
+  "success": true,
+  "projectFilePath": "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Darek\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
