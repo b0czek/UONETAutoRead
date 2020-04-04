@@ -38,7 +38,7 @@ namespace UONETAutoRead.Utils
             {
                 if (JsonConvert.SerializeObject(data.Data[0], Formatting.Indented) != JsonConvert.SerializeObject(client.Data, Formatting.Indented))
                 {
-                    Console.WriteLine("Wystapila zmiana w danych uwierzytelniajacych");
+                    MiscUtils.PrintFormatted("Wystapila zmiana w danych uwierzytelniajacych");
                     client.Data = data.Data[0];
                     await SaveCredentials(client);
                 }
@@ -88,8 +88,9 @@ namespace UONETAutoRead.Utils
             }
             return JsonConvert.DeserializeObject<WiadomosciOdebrane>(ResponseSanitized);
         }
-        public static async Task ReadAllMessages(RegisteredClient client, HttpClient httpClient, List<Wiadomosc> messages)
+        public static async Task<List<ZmienStatusWiadomosciResponse>> ReadAllMessages(RegisteredClient client, HttpClient httpClient, List<Wiadomosc> messages)
         {
+            List<ZmienStatusWiadomosciResponse> responses = new List<ZmienStatusWiadomosciResponse>();
             foreach (Wiadomosc message in messages)
             {
                 if (message.DataPrzeczytaniaUnixEpoch == null)
@@ -109,9 +110,10 @@ namespace UONETAutoRead.Utils
                         body = bodyText,
                         Headers = NetUtils.GenerateGenericHeaders(client.Certificates, bodyText)
                     };
-                    Console.WriteLine(await NetUtils.Query(parameters));
+                    responses.Add(JsonConvert.DeserializeObject<ZmienStatusWiadomosciResponse>(await NetUtils.Query(parameters)));
                 }
             }
+            return responses;
         }
     }
 }

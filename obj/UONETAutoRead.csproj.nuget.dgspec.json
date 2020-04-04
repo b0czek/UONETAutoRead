@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead.csproj": {}
+    "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead.csproj": {}
   },
   "projects": {
-    "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead.csproj": {
+    "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead.csproj",
+        "projectUniqueName": "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead.csproj",
         "projectName": "UONETAutoRead",
-        "projectPath": "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead.csproj",
+        "projectPath": "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead.csproj",
         "packagesPath": "C:\\Users\\Darek\\.nuget\\packages\\",
-        "outputPath": "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\obj\\",
+        "outputPath": "E:\\UONETWidget\\UONETAutoRead\\UONETAutoRead\\UONETAutoRead\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Darek\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

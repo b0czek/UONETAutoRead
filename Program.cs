@@ -21,24 +21,24 @@ namespace UONETAutoRead
             {
                 try
                 {
-                    Console.WriteLine("Wczytywanie danych uwierzytelniających");
+                    MiscUtils.PrintFormatted("Wczytywanie danych uwierzytelniających");
                     registeredClient = await VulcanUtils.ReadCredentials(httpClient);
 
                 }
                 catch (InvalidCastException ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    MiscUtils.PrintFormatted(ex.Message);
                     return;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Wystapil nieznany blad! " + ex.Message);
+                    MiscUtils.PrintFormatted("Wystapil nieznany blad! " + ex.Message);
                     return;
                 }
             }
             else
             {
-                Console.WriteLine("Brak pliku z danymi uwierzytelniającymi. Podaj dane do rejestracji urządzenia mobilnego.");
+                MiscUtils.PrintFormatted("Brak pliku z danymi uwierzytelniającymi. Podaj dane do rejestracji urządzenia mobilnego.");
                 Console.Write("Token: ");
                 string x = Console.ReadLine();
                 Console.Write("Symbol: ");
@@ -52,21 +52,21 @@ namespace UONETAutoRead
                 }
                 catch (System.Security.Authentication.InvalidCredentialException ex)
                 {
-                    Console.WriteLine(ex);
+                    MiscUtils.PrintFormatted(ex.Message);
                     return;
                 }
                 catch (System.Security.Authentication.AuthenticationException ex)
                 {
-                    Console.WriteLine(ex);
+                    MiscUtils.PrintFormatted(ex.Message);
                     return;
                 }
                 catch (HttpRequestException ex)
                 {
-                    Console.WriteLine(ex);
+                    MiscUtils.PrintFormatted(ex.Message);
                     return;
                 }
             }
-            Console.WriteLine("Rozpoczynanie");
+            MiscUtils.PrintFormatted("Rozpoczynanie");
             Timer timer = new Timer();
             timer.Elapsed += new ElapsedEventHandler(ReadMessages);
             timer.Interval = UonetVariables.MessagesConfig.InitialRefreshRateInMilliseconds;
@@ -82,13 +82,17 @@ namespace UONETAutoRead
                 var unread = messages.Data.Where(i => i.DataPrzeczytaniaUnixEpoch == null).ToList();
                 if (unread.Count > 0)
                 {
-                    Console.WriteLine($"Znaleziono {unread.Count} nieodczytanych wiadomości. Oznaczanie jako przeczytane.");
-                    await VulcanUtils.ReadAllMessages(registeredClient, httpClient, unread);
+                    MiscUtils.PrintFormatted($"Oznaczanie jako przeczytane {unread.Count} wiadomośc(i).");
+                    var responses = await VulcanUtils.ReadAllMessages(registeredClient, httpClient, unread);
+                    for(int z = 0; z > responses.Count; z++)
+                    {
+                        MiscUtils.PrintFormatted($"Odczytano wiadomość od {unread[z].Nadawca}, temat - {unread[z].Tytul}");
+                    }
                 }
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MiscUtils.PrintFormatted(ex.Message);
                 return;
             }
         }
