@@ -1,1 +1,2 @@
-bin/Debug/netcoreapp3.1/credentials.json
+bin
+obj
